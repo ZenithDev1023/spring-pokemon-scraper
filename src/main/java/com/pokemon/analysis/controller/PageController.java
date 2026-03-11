@@ -1,13 +1,12 @@
-package com.example.pokemon_data_analysis.Pokemon;
+package com.pokemon.analysis.controller;
+
+import com.pokemon.analysis.model.PokemonDataAnalysis;
+import com.pokemon.analysis.service.PokemonDataAnalysisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-
-import src.main.java.com.example.pokemon_data_analysis.Pokemon.PokemonDataAnalysis;
-import src.main.java.com.example.pokemon_data_analysis.Pokemon.PokemonDataAnalysisService;
 
 import java.util.List;
 
@@ -26,12 +25,14 @@ public class PageController {
 
     @GetMapping("/")
     public String home() {
-
+        return "pokemons";
     }
 
     @GetMapping("/pokemon")
     public String pokemonPage(Model model) {
-        
+        List<PokemonDataAnalysis> pokemons = pokemonDataAnalysisService.getPokemons();
+        model.addAttribute("pokemons", pokemons);
+        return "pokemons";
     }
 
 

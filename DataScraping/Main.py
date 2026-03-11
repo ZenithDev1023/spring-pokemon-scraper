@@ -171,7 +171,7 @@ def scrape_pages_with_selenium(base_url, max_products=755):
             }
 
             product_soup = None
-            max_selenium_retries = 2
+            max_selenium_retries = 3
             scraping_method = "Unknown"
             
             # Selenium first 
@@ -468,7 +468,7 @@ def scrape_pokemondb():
                     if pokemon_name not in unique_pokemon:
                         unique_pokemon.add(pokemon_name)
                         filtered_rows.append(row)
-                        if len(filtered_rows) >= 775:
+                        if len(filtered_rows) >= 1025:
                             break
 
         print(f"Found {len(rows)} Pokemon in the table")
@@ -506,7 +506,7 @@ def scrape_pokemondb():
                 sp_attack = get_stat(7)
                 sp_defense = get_stat(8)
                 speed = get_stat(9)
-                
+
                 # Append extracted data to the dictionary
                 local_pokemondb_data['pokemon_name'].append(pokemon_name)
                 local_pokemondb_data['pokedex_number'].append(pokedex_number)
@@ -552,7 +552,7 @@ def create_fallback_stats():
         'defense': [],
         'sp_attack': [],
         'sp_defense': [],
-        'speed': []
+        'speed': [],
     }
 
     for pokemon in fallback_pokemon:

@@ -1,8 +1,12 @@
-package com.example.pokemon_data_analysis.Pokemon;
+package com.pokemon.analysis.service;
+
+import com.pokemon.analysis.model.PokemonDataAnalysis;
+import com.pokemon.analysis.repository.PokemonDataAnalysisRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import src.main.java.com.example.pokemon_data_analysis.Pokemon.PokemonDataAnalysis;
+
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -101,7 +105,7 @@ public class PokemonDataAnalysisService {
             .collect(Collectors.toList());
     }
 
-    public List<PokemonDataAnalysis> getPokemonByNameAbdWeight(String name, String weight) {
+    public List<PokemonDataAnalysis> getPokemonByNameAndWeight(String name, String weight) {
         return pokemonDataAnalysisRepository.findAll().stream()
             .filter(pokemon -> pokemon.getName().strip().equalsIgnoreCase(name.strip()) && pokemon.getWeight().equalsIgnoreCase(weight))
             .collect(Collectors.toList());
@@ -150,5 +154,42 @@ public class PokemonDataAnalysisService {
     }
 
 
+    public PokemonDataAnalysis addPokemon(PokemonDataAnalysis pokemon) {
+        pokemonDataAnalysisRepository.save(pokemon);
+        return pokemon;
+    }
 
+
+    public PokemonDataAnalysis updatePokemon(PokemonDataAnalysis updatePokemon) {
+        Optional<PokemonDataAnalysis> existingPokemon = pokemonDataAnalysisRepository.getByName(updatePokemon.getName());
+
+        if (existingPokemon.isPresent()) {
+            PokemonDataAnalysis pokemonToUpdate = existingPokemon.get();
+            pokemonToUpdate.setName(updatePokemon.getName());
+            pokemonToUpdate.setPrice(updatePokemon.getPrice());
+            pokemonToUpdate.setDescription(updatePokemon.getDescription());
+            pokemonToUpdate.setStock(updatePokemon.getStock());
+            pokemonToUpdate.setSku(updatePokemon.getSku());
+            pokemonToUpdate.setCategory(updatePokemon.getCategory());
+            pokemonToUpdate.setTag(updatePokemon.getTag());
+            pokemonToUpdate.setWeight(updatePokemon.getWeight());
+            pokemonToUpdate.setDimension(updatePokemon.getDimension());
+            pokemonToUpdate.setScrapingMethod(updatePokemon.getScrapingMethod());
+
+            pokemonDataAnalysisRepository.save(updatePokemon);
+            return updatePokemon;
+        }
+        return null;
+    }
+
+
+    @Transactional
+    public void deletePokemon(String name) {
+        pokemonDataAnalysisRepository.deleteByName(name);
+    }
+
+    @Transactional
+    public void deletePokemonBySku(int sku) {
+        pokemonDataAnalysisRepository.deleteBySku(sku);
+    }
 }

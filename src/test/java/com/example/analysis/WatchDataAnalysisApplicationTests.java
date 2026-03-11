@@ -1,4 +1,4 @@
-package com.example.watch_data_analysis;
+package com.example.analysis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

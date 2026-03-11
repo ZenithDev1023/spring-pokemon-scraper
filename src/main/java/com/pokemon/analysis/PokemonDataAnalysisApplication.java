@@ -1,4 +1,4 @@
-package com.example.pokemon_data_analysis.Pokemon;
+package com.pokemon.analysis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

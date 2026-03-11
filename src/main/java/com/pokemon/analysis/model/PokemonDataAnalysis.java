@@ -1,4 +1,4 @@
-package com.example.pokemon_data_analysis.Pokemon;
+package com.pokemon.analysis.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,30 +6,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="pokemontable")
+@Table(name="scrapeme")
 public class PokemonDataAnalysis {
 
     // Fields
-    @Id
     @Column
+    @Id
     private String name;
-
     private float price;
-
     private String description;
-
     private int stock;
-
     private int sku;
-
     private String category;
-
     private String tag;
-
     private String weight;
-
     private String dimension;
-
     private String scraping_method;
 
 
@@ -38,7 +29,7 @@ public class PokemonDataAnalysis {
 
 
     // Argument Constructor
-    public PokemonDataAnalysis(String name, float price, String description, String stock, int sku, String category, String tag, String weight, String dimension, String scraping_method) {
+    public PokemonDataAnalysis(String name, float price, String description, int stock, int sku, String category, String tag, String weight, String dimension, String scraping_method) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -63,6 +54,19 @@ public class PokemonDataAnalysis {
     public String getWeight() { return weight; }
     public String getDimension() { return dimension; }
     public String getScrapingMethod() { return scraping_method; }
+
+
+    // Setters
+    public void setName(String name) { this.name = name; }
+    public void setPrice(float price) { this.price = price; }
+    public void setDescription(String description) { this.description = description; }
+    public void setStock(int stock) { this.stock = stock; }
+    public void setSku(int sku) { this.sku = sku; }
+    public void setCategory(String category) { this.category = category; }
+    public void setTag(String tag) { this.tag = tag; }
+    public void setWeight(String weight) { this.weight = weight; }
+    public void setDimension(String dimension) { this.dimension = dimension; }
+    public void setScrapingMethod(String scraping_method) { this.scraping_method = scraping_method; }
 
 
     public String getString() {

@@ -1,4 +1,7 @@
-package com.example.pokemon_data_analysis.Pokemon;
+package com.pokemon.analysis.repository;
+
+import com.pokemon.analysis.model.PokemonDataAnalysis;
+import com.pokemon.analysis.service.PokemonDataAnalysisService;
 
 import java.util.Optional;
 import java.util.List;
@@ -6,11 +9,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import src.main.java.com.example.pokemon_data_analysis.Pokemon.PokemonDataAnalysis;
 
 @Repository
 public interface PokemonDataAnalysisRepository extends JpaRepository<PokemonDataAnalysis, Long> {
-    void deletebyName(String name);
+    void deleteByName(String name);
+    void deleteBySku(int sku);
 
     Optional<PokemonDataAnalysis> getByName(String name);
 
