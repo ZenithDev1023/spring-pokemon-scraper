@@ -1,7 +1,6 @@
 package com.pokemon.analysis.repository;
 
 import com.pokemon.analysis.model.PokemonDb;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,41 +9,43 @@ import java.util.Optional;
 
 
 @Repository
-public interface PokemonDbRepository extends JpaRepository<PokemonDb, Long> {
-    void deleteByName(String pokemon_name);
-    void deleteByPokedexNumber(int pokedex_number);
+public interface PokemonDbRepository extends JpaRepository<PokemonDb, String> {
 
-    Optional<PokemonDb> findByName(String pokemon_name);
-    Optional<PokemonDb> findByPokedexNumber(int pokedex_number);
+    void deleteByPokemonName(String pokemonName);
+    void deleteByPokedex(int pokedex);
+    void deleteByPokemonNameAndPokedex(String pokemonName, int pokedex);
+
+    Optional<PokemonDb> findByPokemonName(String pokemonName);
+    Optional<PokemonDb> findByPokedex(int pokedex);
+    Optional<PokemonDb> findByPokemonNameAndPokedex(String pokemonName, int pokedex);
 
     List<PokemonDb> findByType1(String type1);
     List<PokemonDb> findByType2(String type2);
-    List<PokemonDb> findByTotalStats(int total_stats);
+    List<PokemonDb> findByTotalStats(int totalStats);
     List<PokemonDb> findByHp(int hp);
     List<PokemonDb> findByAttack(int attack);
     List<PokemonDb> findByDefense(int defense);
-    List<PokemonDb> findBySpAttack(int sp_attack);
-    List<PokemonDb> findBySpDefense(int sp_defense);
+    List<PokemonDb> findBySpAttack(int spAttack);
+    List<PokemonDb> findBySpDefense(int spDefense);
     List<PokemonDb> findBySpeed(int speed);
 
-    List<PokemonDb> findByNameAndPokedexNumber(String pokemon_name, int pokedex_number);
-    List<PokemonDb> findByNameAndType1(String pokemon_name, String type1);
-    List<PokemonDb> findByNameAndType2(String pokemon_name, String type2);
-    List<PokemonDb> findByNameAndTotalStats(String pokemon_name, int total_stats);
-    List<PokemonDb> findByNameAndHp(String pokemon_name, int hp);
-    List<PokemonDb> findByNameAndAttack(String pokemon_name, int attack);
-    List<PokemonDb> findByNameAndDefense(String pokemon_name, int defense);
-    List<PokemonDb> findByNameAndSpAttack(String pokemon_name, int sp_attack);
-    List<PokemonDb> findByNameAndSpDefense(String pokemon_name, int sp_defense);
-    List<PokemonDb> findByNameAndSpeed(String pokemon_name, int speed);
+    List<PokemonDb> findByPokemonNameAndType1(String pokemonName, String type1);
+    List<PokemonDb> findByPokemonNameAndType2(String pokemonName, String type2);
+    List<PokemonDb> findByPokemonNameAndTotalStats(String pokemonName, int totalStats);
+    List<PokemonDb> findByPokemonNameAndHp(String pokemonName, int hp);
+    List<PokemonDb> findByPokemonNameAndAttack(String pokemonName, int attack);
+    List<PokemonDb> findByPokemonNameAndDefense(String pokemonName, int defense);
+    List<PokemonDb> findByPokemonNameAndSpAttack(String pokemonName, int spAttack);
+    List<PokemonDb> findByPokemonNameAndSpDefense(String pokemonName, int spDefense);
+    List<PokemonDb> findByPokemonNameAndSpeed(String pokemonName, int speed);
 
-    List<PokemonDb> findByPokedexNumberAndType1(int pokedex_number, String type1);
-    List<PokemonDb> findByPokedexNumberAndType2(int pokedex_number, String type2);
-    List<PokemonDb> findByPokedexNumberAndTotalStats(int pokedex_number, int total_stats);
-    List<PokemonDb> findByPokedexNumberAndHp(int pokedex_number, int hp);
-    List<PokemonDb> findByPokedexNumberAndAttack(int pokedex_number, int attack);
-    List<PokemonDb> findByPokedexNumberAndDefense(int pokedex_number, int defense);
-    List<PokemonDb> findByPokedexNumberAndSpAttack(int pokedex_number, int sp_attack);
-    List<PokemonDb> findByPokedexNumberAndSpDefense(int pokedex_number, int sp_defense);
-    List<PokemonDb> findByPokedexNumberAndSpeed(int pokedex_number, int speed);
+    List<PokemonDb> findByPokedexAndType1(int pokedex, String type1);
+    List<PokemonDb> findByPokedexAndType2(int pokedex, String type2);
+    List<PokemonDb> findByPokedexAndTotalStats(int pokedex, int totalStats);
+    List<PokemonDb> findByPokedexAndHp(int pokedex, int hp);
+    List<PokemonDb> findByPokedexAndAttack(int pokedex, int attack);
+    List<PokemonDb> findByPokedexAndDefense(int pokedex, int defense);
+    List<PokemonDb> findByPokedexAndSpAttack(int pokedex, int spAttack);
+    List<PokemonDb> findByPokedexAndSpDefense(int pokedex, int spDefense);
+    List<PokemonDb> findByPokedexAndSpeed(int pokedex, int speed);
 }

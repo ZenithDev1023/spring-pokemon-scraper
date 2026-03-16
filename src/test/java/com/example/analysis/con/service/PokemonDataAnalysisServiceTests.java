@@ -1,4 +1,4 @@
-package com.example.analysis.service;
+package com.example.analysis.con.service;
 
 public class PokemonDataAnalysisServiceTests {
     

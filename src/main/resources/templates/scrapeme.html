@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="nav" id="topNav">
+            <a href="/"><img src="" class="nav-logo"></a>
+            <a href="/pokemondb" class="nav-links">PokemonDB</a>
+            <a href="/scrapeme" class="nav-links">Scrape me</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+            <input type="text" class="navSearchBar" placeholder="Search...">
+        </div>
+
+        <h1>Scrape Me</h1>
+
+
+        <div class="table-div">
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Sku</th>
+                    <th>Category</th>
+                    <th>Tag</th>
+                    <th>Weight</th>
+                    <th>Dimension</th>
+                    <th>Scraping Method</th>
+                </tr>
+
+                <tr th:each="pokemon : ${scrapeme}">
+                    <td th:text="${pokemon.name}"></td>
+                    <td th:text="${pokemon.price}"></td>
+                    <td th:text="${pokemon.description}"></td>
+                    <td th:text="${pokemon.stock}"></td>
+                    <td th:text="${pokemon.sku}"></td>
+                    <td th:text="${pokemon.category}"></td>
+                    <td th:text="${pokemon.tag}"></td>
+                    <td th:text="${pokemon.weight}"></td>
+                    <td th:text="${pokemon.dimension}"></td>
+                    <td th:text="${pokemon.scrapingMethod}"></td>
+                </tr>
+            </table>
+        </div>
+
+        <footer>
+            <div class="row">
+                <div class="col1">
+                    <span>
+    
+                    </span>
+                </div>
+    
+                <div class="col2">
+                    <span>
+    
+                    </span>
+                </div>
+    
+                <div class="col3">
+                    <span id="icon" class="fa fa-envelope"></span>
+                </div>
+    
+                <ul class="contact">
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-pinterest-p"></a></li>
+                </ul>
+            </div>
+        </footer>
+        
+
+        <script src="static/main.js"></script>
+    </body>
+</html>

@@ -10,17 +10,17 @@ import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.Collection;
 import java.util.Collections;
 
 
 @Component
 public class PokemonDataAnalysisService {
+
     // Fields
     private PokemonDataAnalysisRepository pokemonDataAnalysisRepository;
 
+    // Constructor
     @Autowired
     public PokemonDataAnalysisService(PokemonDataAnalysisRepository pokemonDataAnalysisRepository) {
         this.pokemonDataAnalysisRepository = pokemonDataAnalysisRepository;
@@ -43,7 +43,7 @@ public class PokemonDataAnalysisService {
         return pokemonDataAnalysisRepository.getByPrice(price);
     }
 
-    public List<PokemonDataAnalysis> getPokemonByStock(int stock) {
+    public List<PokemonDataAnalysis> getPokemonByStock(String stock) {
         return pokemonDataAnalysisRepository.getByStock(stock);
     }
 
@@ -81,9 +81,9 @@ public class PokemonDataAnalysisService {
             .collect(Collectors.toList());
     }
 
-    public List<PokemonDataAnalysis> getPokemonByNameAndStock(String name, int stock) {
+    public List<PokemonDataAnalysis> getPokemonByNameAndStock(String name, String stock) {
         return pokemonDataAnalysisRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getName().equalsIgnoreCase(pokemon.getName()) && pokemon.getStock() == stock)
+            .filter(pokemon -> pokemon.getName().equalsIgnoreCase(pokemon.getName()) && pokemon.getStock().equalsIgnoreCase(stock))
             .collect(Collectors.toList());
     }
 
@@ -117,9 +117,9 @@ public class PokemonDataAnalysisService {
             .collect(Collectors.toList());
     }
 
-    public List<PokemonDataAnalysis> getPokemonByPriceAndStock(float price, int stock) {
+    public List<PokemonDataAnalysis> getPokemonByPriceAndStock(float price, String stock) {
         return pokemonDataAnalysisRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPrice() == price && pokemon.getStock() == stock)
+            .filter(pokemon -> pokemon.getPrice() == price && pokemon.getStock().equalsIgnoreCase(stock))
             .collect(Collectors.toList());
     }
 
@@ -191,5 +191,15 @@ public class PokemonDataAnalysisService {
     @Transactional
     public void deletePokemonBySku(int sku) {
         pokemonDataAnalysisRepository.deleteBySku(sku);
+    }
+
+    @Transactional 
+    public void deletePokemonByNameAndSku(String name, int sku) {
+        pokemonDataAnalysisRepository.deleteByNameAndSku(name, sku);
+    }
+
+    @Transactional
+    public void deletePokemonByPriceAndSku(float price, int sku) {
+        pokemonDataAnalysisRepository.deleteByPriceAndSku(price, sku);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.analysis.repository;
+package com.example.analysis.con.repository;
 
 public class PokemonDataAnalysisRepositoryTests {
     

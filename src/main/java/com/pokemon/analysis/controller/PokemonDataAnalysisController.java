@@ -35,7 +35,7 @@ public class PokemonDataAnalysisController {
         @RequestParam(required = false) String name,
         @RequestParam(required = false) float price,
         @RequestParam(required = false) String description,
-        @RequestParam(required = false) int stock,
+        @RequestParam(required = false) String stock,
         @RequestParam(required = false) int sku,
         @RequestParam(required = false) String category,
         @RequestParam(required = false) String tag,
@@ -46,7 +46,7 @@ public class PokemonDataAnalysisController {
             if (name != null && price >= 0.0) {
                 return pokemonDataAnalysisService.getPokemonByNameAndPrice(name, price);
             }
-            else if (name != null && stock >= 0) {
+            else if (name != null && stock != null) {
                 return pokemonDataAnalysisService.getPokemonByNameAndStock(name, stock);
             }
             else if (name != null && sku >= 0) {
@@ -64,7 +64,7 @@ public class PokemonDataAnalysisController {
             else if (name != null && dimension != null) {
                 return pokemonDataAnalysisService.getPokemonByNameAndDimension(name, dimension);
             }
-            else if (price >= 0 && stock >= 0) {
+            else if (price >= 0 && stock != null) {
                 return pokemonDataAnalysisService.getPokemonByPriceAndStock(price, stock);
             }
             else if (price >= 0 && sku >= 0) {

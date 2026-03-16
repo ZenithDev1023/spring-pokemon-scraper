@@ -3,7 +3,6 @@ package com.pokemon.analysis.controller;
 import com.pokemon.analysis.model.PokemonDb;
 import com.pokemon.analysis.service.PokemonDbService;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,40 +33,40 @@ public class PokemonDbController {
 
     @GetMapping
     public List<PokemonDb> getPokemon(
-        @RequestParam(required = false) String pokemon_name,
-        @RequestParam(required = false) int pokedex_number,
+        @RequestParam(required = false) String pokemonName,
+        @RequestParam(required = false) int pokedex,
         @RequestParam(required = false) String type1,
         @RequestParam(required = false) String type2,
-        @RequestParam(required = false) int total_stats,
+        @RequestParam(required = false) int totalStats,
         @RequestParam(required = false) int hp,
         @RequestParam(required = false) int attack,
         @RequestParam(required = false) int defense,
-        @RequestParam(required = false) int sp_attack,
-        @RequestParam(required = false) int sp_defense,
+        @RequestParam(required = false) int spAttack,
+        @RequestParam(required = false) int spDefense,
         @RequestParam(required = false) int speed
     ) {
-        if (pokedex_number >= 0) {
-            return pokemonService.getPokemonByPokedexNumber(pokedex_number);
+        if (pokedex >= 0) {
+            return pokemonService.getPokemonByPokedex(pokedex);
         } else if (type1 != null) {
             return pokemonService.getPokemonByType1(type1);
         } else if (type2 != null) {
             return pokemonService.getPokemonByType2(type2);
-        } else if (total_stats >= 0) {
-            return pokemonService.getPokemonByTotalStats(total_stats);
+        } else if (totalStats >= 0) {
+            return pokemonService.getPokemonByTotalStats(totalStats);
         } else if (hp >= 0) {
             return pokemonService.getPokemonByHp(hp);
         } else if (attack >= 0) {
             return pokemonService.getPokemonByAttack(attack);
         } else if (defense >= 0) {
             return pokemonService.getPokemonByDefense(defense);
-        } else if (sp_attack >= 0) {
-            return pokemonService.getPokemonBySpAttack(sp_attack);
-        } else if (sp_defense >= 0) {
-            return pokemonService.getPokemonBySpDefense(sp_defense);
+        } else if (spAttack >= 0) {
+            return pokemonService.getPokemonBySpAttack(spAttack);
+        } else if (spDefense >= 0) {
+            return pokemonService.getPokemonBySpDefense(spDefense);
         } else if (speed >= 0) {
             return pokemonService.getPokemonBySpeed(speed);
         } else {
-            return pokemonService.getPokemonByName(pokemon_name);
+            return pokemonService.getPokemonByName(pokemonName);
         }
     }
 
@@ -95,8 +94,8 @@ public class PokemonDbController {
 
 
     @DeleteMapping("/{pokemon_name}")
-    public ResponseEntity<String> deletePokemon(@PathVariable String pokemon_name) {
-        pokemonService.deleteByName(pokemon_name);
+    public ResponseEntity<String> deletePokemon(@PathVariable String pokemonName) {
+        pokemonService.deleteByName(pokemonName);
         return new ResponseEntity<>("Pokemon deleted successfully", HttpStatus.OK);
     }
 }

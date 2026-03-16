@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Pokemons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="nav" id="topNav">
+            <a href="/"><img src="" class="nav-logo"></a>
+            <a href="/pokemondb" class="nav-links">PokemonDB</a>
+            <a href="/scrapeme" class="nav-links">Scrape me</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+            <input type="text" class="navSearchBar" placeholder="Search...">
+        </div>
+
+        <h1>PokemonDb</h1>
+
+        <div class="table-div">
+            <table border="1">
+                <tr>
+                    <th>Pokemon Name</th>
+                    <th>Pokedex Number</th>
+                    <th>Type 1</th>
+                    <th>Type 2</th>
+                    <th>Total Stats</th>
+                    <th>Hp</th>
+                    <th>Attack</th>
+                    <th>Defense</th>
+                    <th>Sp Attack</th>
+                    <th>Sp Defense</th>
+                    <th>Speed</th>
+                </tr>
+                
+                <tr th:each="pokemon : ${pokemondb}">
+                    <td th:text="${pokemon.pokemonName}"></td>
+                    <td th:text="${pokemon.pokedex}"></td>
+                    <td th:text="${pokemon.type1}"></td>
+                    <td th:text="${pokemon.type2}"></td>
+                    <td th:text="${pokemon.totalStats}"></td>
+                    <td th:text="${pokemon.hp}"></td>
+                    <td th:text="${pokemon.attack}"></td>
+                    <td th:text="${pokemon.defense}"></td>
+                    <td th:text="${pokemon.spAttack}"></td>
+                    <td th:text="${pokemon.spDefense}"></td>
+                    <td th:text="${pokemon.speed}"></td>
+                </tr>
+            </table>
+        </div>
+
+        
+
+        <footer>
+            <div class="row">
+                <div class="col1">
+                    <span>
+    
+                    </span>
+                </div>
+    
+                <div class="col2">
+                    <span>
+    
+                    </span>
+                </div>
+    
+                <div class="col3">
+                    <span id="icon" class="fa fa-envelope"></span>
+                </div>
+    
+                <ul class="contact">
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-pinterest-p"></a></li>
+                </ul>
+            </div>
+        </footer>
+
+
+        <script src="static/main.js"></script>
+    </body>
+</html>

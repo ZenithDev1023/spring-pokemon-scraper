@@ -15,7 +15,7 @@ public class PokemonDataAnalysis {
     private String name;
     private float price;
     private String description;
-    private int stock;
+    private String stock;
     private int sku;
     private String category;
     private String tag;
@@ -29,7 +29,7 @@ public class PokemonDataAnalysis {
 
 
     // Argument Constructor
-    public PokemonDataAnalysis(String name, float price, String description, int stock, int sku, String category, String tag, String weight, String dimension, String scraping_method) {
+    public PokemonDataAnalysis(String name, float price, String description, String stock, int sku, String category, String tag, String weight, String dimension, String scraping_method) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -47,7 +47,7 @@ public class PokemonDataAnalysis {
     public String getName() { return name; }
     public float getPrice() { return price; }
     public String getDescription() { return description; }
-    public int getStock() { return stock; }
+    public String getStock() { return stock; }
     public int getSku() { return sku; }
     public String getCategory() { return category; }
     public String getTag() { return tag; }
@@ -60,7 +60,7 @@ public class PokemonDataAnalysis {
     public void setName(String name) { this.name = name; }
     public void setPrice(float price) { this.price = price; }
     public void setDescription(String description) { this.description = description; }
-    public void setStock(int stock) { this.stock = stock; }
+    public void setStock(String stock) { this.stock = stock; }
     public void setSku(int sku) { this.sku = sku; }
     public void setCategory(String category) { this.category = category; }
     public void setTag(String tag) { this.tag = tag; }
@@ -71,7 +71,7 @@ public class PokemonDataAnalysis {
 
     public String getString() {
         return String.format(
-            "Name: %s, Price: %.4f, Description: %s, Stock: %d, Sku: %d, Category: %s, Tag: %s, Weight: %.2f, Dimension: %s, Scraping-Method: %s",
+            "Name: %s, Price: %.4f, Description: %s, Stock: %s, Sku: %d, Category: %s, Tag: %s, Weight: %.2f, Dimension: %s, Scraping-Method: %s",
             name, price, description, stock, sku, category, tag, weight, dimension, scraping_method
         );
     }

@@ -3,6 +3,9 @@ package com.pokemon.analysis.controller;
 import com.pokemon.analysis.model.PokemonDataAnalysis;
 import com.pokemon.analysis.service.PokemonDataAnalysisService;
 
+import com.pokemon.analysis.model.PokemonDb;
+import com.pokemon.analysis.service.PokemonDbService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,24 +19,34 @@ public class PageController {
 
     // Fields
     private final PokemonDataAnalysisService pokemonDataAnalysisService;
+    private final PokemonDbService pokemonDbService;
 
     @Autowired
-    public PageController(PokemonDataAnalysisService pokemonDataAnalysisService) {
+    public PageController(
+        PokemonDataAnalysisService pokemonDataAnalysisService, 
+        PokemonDbService pokemonDbService
+    ) {
         this.pokemonDataAnalysisService = pokemonDataAnalysisService;
+        this.pokemonDbService = pokemonDbService;
     }
 
 
     @GetMapping("/")
     public String home() {
-        return "pokemons";
+        return "main";
     }
 
-    @GetMapping("/pokemon")
-    public String pokemonPage(Model model) {
+    @GetMapping("/pokemondb")
+    public String pokemomDbPokemonPage(Model model) {
+        List<PokemonDb> pokemons = pokemonDbService.getPokemons();
+        model.addAttribute("pokemondb", pokemons);
+        return "pokemondb";
+    }
+
+    @GetMapping("/scrapeme")
+    public String scrapeMePokemonPage(Model model) {
         List<PokemonDataAnalysis> pokemons = pokemonDataAnalysisService.getPokemons();
-        model.addAttribute("pokemons", pokemons);
-        return "pokemons";
+        model.addAttribute("scrapeme", pokemons);
+        return "scrapeme";
     }
-
-
 }
