@@ -39,14 +39,6 @@ body {
     transform: scale(1.05);
 }
 
-.nav-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-}
-
-
 
 .nav a {
     text-decoration: none;
@@ -62,6 +54,8 @@ body {
 .nav a:hover {
     color: coral;
     background-color: rgba(255, 127, 80, 0.1);
+    transform: scaleX(1.10);
+    letter-spacing: 0.05rem;
 }
 
 .navSearchBar {
@@ -139,6 +133,10 @@ footer {
     color: white;
     padding: 30px 20px;
     margin-top: 50px;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 
@@ -220,7 +218,9 @@ footer {
     }
 
     .nav a {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        padding: 2px 4px;
+
     }
 
     .navSearchBar {

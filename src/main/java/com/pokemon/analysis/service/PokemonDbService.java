@@ -1,16 +1,12 @@
 package com.pokemon.analysis.service;
 
 import com.pokemon.analysis.model.PokemonDb;
-import com.pokemon.analysis.repository.PokemonDataAnalysisRepository;
 import com.pokemon.analysis.repository.PokemonDbRepository;
-
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,158 +22,142 @@ public class PokemonDbService {
     }
 
 
+    @Transactional(readOnly = true)
+    public Optional<PokemonDb> getPokemonByNameAndPokedex(String pokemonName, int pokedex) {
+        return pokemonRepository.findByPokemonNameAndPokedex(pokemonName, pokedex);
+    }
+
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemons() {
         return pokemonRepository.findAll();
     }
 
-    public List<PokemonDb> getPokemonByName(String pokemonName) {
-        return pokemonRepository.findByPokemonName(pokemonName)
-            .map(Collections::singletonList)
-            .orElse(Collections.emptyList());
-
+    @Transactional(readOnly = true)
+    public Optional<PokemonDb> getPokemonByName(String pokemonName) {
+        return pokemonRepository.findByPokemonName(pokemonName);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedex(int pokedex) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedex(pokedex);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByType1(String type1) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getType1().equalsIgnoreCase(type1.strip()))
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByType1(type1);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByType2(String type2) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getType2().equalsIgnoreCase(type2.strip()))
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByType2(type2);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByTotalStats(int totalStats) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getTotalStats() == totalStats)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByTotalStats(totalStats);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByHp(int hp) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getHp() == hp)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByHp(hp);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByAttack(int attack) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getAttack() == attack)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByAttack(attack);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByDefense(int defense) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getDefense() == defense)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByDefense(defense);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonBySpAttack(int spAttack) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getSpAttack() == spAttack)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonBySpAttack(spAttack);
     }
 
     public List<PokemonDb> getPokemonBySpDefense(int spDefense) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getSpDefense() == spDefense)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonBySpDefense(spDefense);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonBySpeed(int speed) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getSpeed() == speed)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonBySpeed(speed);
     }
 
+
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndType1(int pokedex, String type1) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getType1().equalsIgnoreCase(type1.strip()))
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndType1(pokedex, type1);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndType2(int pokedex, String type2) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getType2().equalsIgnoreCase(type2.strip()))
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndType2(pokedex, type2);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndTotalStats(int pokedex, int totalStats) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getTotalStats() == totalStats)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndTotalStats(pokedex, totalStats);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndHp(int pokedex, int hp) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getHp() == hp)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndHp(pokedex, hp);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndAttack(int pokedex, int attack) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getAttack() == attack)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndAttack(pokedex, attack);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndDefense(int pokedex, int defense) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getDefense() == defense)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndDefense(pokedex, defense);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndSpAttack(int pokedex, int spAttack) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getSpAttack() == spAttack)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndSpAttack(pokedex, spAttack);
     }
 
-    public List<PokemonDb> getPokemonByPokedexAndSp_defense(int pokedex, int spDefense) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getSpDefense() == spDefense)
-            .collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public List<PokemonDb> getPokemonByPokedexAndSpDefense(int pokedex, int spDefense) {
+        return pokemonRepository.findPokemonByPokedexAndSpDefense(pokedex, spDefense);
     }
 
+    @Transactional(readOnly = true)
     public List<PokemonDb> getPokemonByPokedexAndSpeed(int pokedex, int speed) {
-        return pokemonRepository.findAll().stream()
-            .filter(pokemon -> pokemon.getPokedex() == pokedex && pokemon.getSpeed() == speed)
-            .collect(Collectors.toList());
+        return pokemonRepository.findPokemonByPokedexAndSpeed(pokedex, speed);
     }
 
 
+    @Transactional
     public PokemonDb addPokemon(PokemonDb Pokemon) {
         pokemonRepository.save(Pokemon);
         return Pokemon;
     }
 
 
+    @Transactional
     public PokemonDb updatePokemon(PokemonDb updatedPokemon) {
-        Optional<PokemonDb> existingPokemon = pokemonRepository.findByPokemonName(updatedPokemon.getPokemonName());
+        PokemonDb pokemon = pokemonRepository
+            .findByPokemonName(updatedPokemon.getPokemonName())
+            .orElseThrow(() -> new RuntimeException("Pokemon not found"));
 
-        if (existingPokemon.isPresent()) {
-            PokemonDb pokemonToUpdate = existingPokemon.get();
-            pokemonToUpdate.setPokedex(updatedPokemon.getPokedex());
-            pokemonToUpdate.setType1(updatedPokemon.getType1());
-            pokemonToUpdate.setType2(updatedPokemon.getType2());
-            pokemonToUpdate.setTotalStats(updatedPokemon.getTotalStats());
-            pokemonToUpdate.setHp(updatedPokemon.getHp());
-            pokemonToUpdate.setAttack(updatedPokemon.getAttack());
-            pokemonToUpdate.setDefense(updatedPokemon.getDefense());
-            pokemonToUpdate.setSpAttack(updatedPokemon.getSpAttack());
-            pokemonToUpdate.setSpDefense(updatedPokemon.getSpDefense());
-            pokemonToUpdate.setSpeed(updatedPokemon.getSpeed());
+        pokemon.setPokedex(updatedPokemon.getPokedex());
+        pokemon.setType1(updatedPokemon.getType1());
+        pokemon.setType2(updatedPokemon.getType2());
+        pokemon.setTotalStats(updatedPokemon.getTotalStats());
+        pokemon.setHp(updatedPokemon.getHp());
+        pokemon.setAttack(updatedPokemon.getAttack());
+        pokemon.setDefense(updatedPokemon.getDefense());
+        pokemon.setSpAttack(updatedPokemon.getSpAttack());
+        pokemon.setSpDefense(updatedPokemon.getSpDefense());
+        pokemon.setSpeed(updatedPokemon.getSpeed());
 
-            pokemonRepository.save(updatedPokemon);
-            return updatedPokemon;
-        }
-        return null;
+        return pokemon;
     }
 
 

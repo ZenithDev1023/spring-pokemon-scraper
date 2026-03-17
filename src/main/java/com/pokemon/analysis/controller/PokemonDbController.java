@@ -33,7 +33,6 @@ public class PokemonDbController {
 
     @GetMapping
     public List<PokemonDb> getPokemon(
-        @RequestParam(required = false) String pokemonName,
         @RequestParam(required = false) int pokedex,
         @RequestParam(required = false) String type1,
         @RequestParam(required = false) String type2,
@@ -63,11 +62,9 @@ public class PokemonDbController {
             return pokemonService.getPokemonBySpAttack(spAttack);
         } else if (spDefense >= 0) {
             return pokemonService.getPokemonBySpDefense(spDefense);
-        } else if (speed >= 0) {
-            return pokemonService.getPokemonBySpeed(speed);
         } else {
-            return pokemonService.getPokemonByName(pokemonName);
-        }
+            return pokemonService.getPokemonBySpeed(speed);
+        } 
     }
 
 
