@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -15,7 +16,22 @@
         <input type="text" class="navSearchBar" placeholder="Search...">
     </div>
 
-    <h1 class="header">Main Page</h1>
+    <h1 class="header">Pokemon Types</h1>
+
+    <div class="div-container">
+        <div class="row">
+
+            <div th:each="entry : ${pokemonByType}" class="type-container">
+                
+                <a href="#" th:href="@{'/type/' + ${entry.key}}" class="typeLink">
+                    <img src="" th:alt="${entry.key} + ' type'">
+                    <h2 th:text="${entry.key} + ' type'"></h2>
+                    <p th:text="${entry.value.size()} + ' Pokemon'"></p>
+                </a>
+
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">

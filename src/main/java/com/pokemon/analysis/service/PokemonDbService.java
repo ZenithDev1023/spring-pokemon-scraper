@@ -22,6 +22,11 @@ public class PokemonDbService {
     }
 
 
+    @Transactional
+    public List<PokemonDb> getAllPokemon() {
+        return pokemonRepository.findAll();
+    }
+
     @Transactional(readOnly = true)
     public Optional<PokemonDb> getPokemonByNameAndPokedex(String pokemonName, int pokedex) {
         return pokemonRepository.findByPokemonNameAndPokedex(pokemonName, pokedex);

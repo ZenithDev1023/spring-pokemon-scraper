@@ -29,12 +29,7 @@ public class PageController {
         this.pokemonDataAnalysisService = pokemonDataAnalysisService;
         this.pokemonDbService = pokemonDbService;
     }
-
-
-    @GetMapping("/")
-    public String home() {
-        return "main";
-    }
+    
 
     @GetMapping("/pokemondb")
     public String pokemomDbPokemonPage(Model model) {

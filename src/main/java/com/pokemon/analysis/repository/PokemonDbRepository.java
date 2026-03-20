@@ -15,6 +15,8 @@ public interface PokemonDbRepository extends JpaRepository<PokemonDb, String> {
     void deleteByPokedex(int pokedex);
     void deleteByPokemonNameAndPokedex(String pokemonName, int pokedex);
 
+    List<PokemonDb> findAll();
+
     Optional<PokemonDb> findByPokemonNameAndPokedex(String pokemonName, int pokedex);
 
     Optional<PokemonDb> findByPokemonName(String pokemonName);
