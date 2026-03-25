@@ -1,7 +1,6 @@
-package com.pokemon.analysis.controller;
+package com.pokemon.analysis.pokemondb;
 
-import com.pokemon.analysis.model.PokemonDb;
-import com.pokemon.analysis.service.PokemonDbService;
+import com.pokemon.analysis.service.pokemondb.PokemonDbService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.pokemon.analysis.model;
+package com.pokemon.analysis.scrapeme;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

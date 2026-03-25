@@ -1,7 +1,6 @@
-package com.pokemon.analysis.controller;
+package com.pokemon.analysis.scrapeme;
 
-import com.pokemon.analysis.service.PokemonDataAnalysisService;
-import com.pokemon.analysis.model.PokemonDataAnalysis;
+import com.pokemon.analysis.service.scrapeme.PokemonDataAnalysisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
-package com.pokemon.analysis.service;
+package com.pokemon.analysis.service.pokemondb;
 
-import com.pokemon.analysis.model.PokemonDb;
+import com.pokemon.analysis.pokemondb.PokemonDb;
 import com.pokemon.analysis.repository.PokemonDbRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

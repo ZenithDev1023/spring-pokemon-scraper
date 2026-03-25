@@ -1,4 +1,4 @@
-package com.pokemon.analysis.model;
+package com.pokemon.analysis.pokemondb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +37,7 @@ public class PokemonDb {
     @Column(name = "sp_defense")
     private int spDefense;
     private int speed;
+
 
     // Default Constructor
     public PokemonDb() {}

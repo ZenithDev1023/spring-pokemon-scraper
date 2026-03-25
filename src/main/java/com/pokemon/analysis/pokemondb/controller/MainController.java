@@ -1,4 +1,4 @@
-package com.pokemon.analysis.controller;
+package com.pokemon.analysis.pokemondb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.pokemon.analysis.model.PokemonDb;
-import com.pokemon.analysis.service.PokemonDbService;
+import com.pokemon.analysis.service.pokemondb.PokemonDbService;
 
 import org.springframework.ui.Model;
 

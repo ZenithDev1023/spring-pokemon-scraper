@@ -1,10 +1,9 @@
 package com.pokemon.analysis.controller;
 
-import com.pokemon.analysis.model.PokemonDataAnalysis;
-import com.pokemon.analysis.service.PokemonDataAnalysisService;
-
-import com.pokemon.analysis.model.PokemonDb;
-import com.pokemon.analysis.service.PokemonDbService;
+import com.pokemon.analysis.pokemondb.model.PokemonDb;
+import com.pokemon.analysis.pokemondb.service.PokemonDbService;
+import com.pokemon.analysis.scrapeme.model.PokemonDataAnalysis;
+import com.pokemon.analysis.scrapeme.service.PokemonDataAnalysisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
