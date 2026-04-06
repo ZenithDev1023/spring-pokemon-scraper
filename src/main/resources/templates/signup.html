@@ -2,16 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/pokemon-types.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/login.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        
+
         <div class="nav" id="topNav">
             <a href="/"><img src="/images/1C1E6614-57ED-402A-888B-9D364F9BE820_4_5005_c.jpeg" class="nav-logo"></a>
             <a href="/pokemondb" class="nav-links">PokemonDB</a>
@@ -22,42 +23,26 @@
             <input type="text" class="navSearchBar" placeholder="Search...">
         </div>
 
-        <h1 class="header" th:text="'Pokemon Type ' + ${typeName}"></h1>
 
-        <div class="div-container">
-            <div class="row">
+        <div class="outerContainer">
+            <h1>Sign up Page</h1>
+            
+            <form action="/signup" method="post" th:object="${user}">
+                <div class="loginContainer">
+                    <label>Username</label>
+                    <input type="text" placeholder="Enter Username" required>
 
-                <div class="headers-div">
-                    <p class="headers">Pokedex</p>
-                    <p class="headers">Name</p>
-                    <p class="headers">Type 1</p>
-                    <p class="headers">Type 2</p>
-                    <p class="headers">T Stats</p>
-                    <p class="headers">Hp</p>
-                    <p class="headers">Attack</p>
-                    <p class="headers">Defense</p>
-                    <p class="headers">spA</p>
-                    <p class="headers">spD</p>
-                    <p class="headers">Speed</p>
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter Email" required>
+
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter Password" required>
+
+                    <button class="loginButton">Sign up</button>
                 </div>
-
-                <div th:each="pokemon : ${pokemonList}" class="pokemon-container">
-
-                    <p th:text="${pokemon.pokedex}"></p>
-                    <p th:text="${pokemon.pokemonName}"></p>
-                    <p th:text="${pokemon.type1}"></p>
-                    <p th:text="${pokemon.type2}"></p>
-                    <p th:text="${pokemon.totalStats}"></p>
-                    <p th:text="${pokemon.hp}">a</p>
-                    <p th:text="${pokemon.attack}"></p>
-                    <p th:text="${pokemon.defense}"></p>
-                    <p th:text="${pokemon.spAttack}"></p>
-                    <p th:text="${pokemon.spDefense}"></p>
-                    <p th:text="${pokemon.speed}"></p>
-
-                </div>
-            </div>
+            </form>
         </div>
+
 
 
         <footer>
@@ -86,6 +71,7 @@
                 </div>
             </div>
         </footer>
-    
+        
+        <script src="" async defer></script>
     </body>
 </html>

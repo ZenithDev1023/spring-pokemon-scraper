@@ -1,0 +1,37 @@
+.outerContainer {
+}
+
+
+.innerContainer {
+    padding: 20px 40px;
+}
+
+.innerContainer p {
+    font-size: 1.25rem;
+    margin-bottom: 60px;
+}
+
+.aboutHeader {
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.subHeader {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+ul li {
+    margin-top: 20px;
+}
+
+.listElem {
+    font-size: 1.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutHeader {
+        font-size: 2rem;
+    }
+}

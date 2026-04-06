@@ -1,8 +1,8 @@
 package com.pokemon.analysis.controller;
 
-import com.pokemon.analysis.pokemondb.model.PokemonDb;
+import com.pokemon.analysis.pokemondb.entity.PokemonDb;
 import com.pokemon.analysis.pokemondb.service.PokemonDbService;
-import com.pokemon.analysis.scrapeme.model.PokemonDataAnalysis;
+import com.pokemon.analysis.scrapeme.entity.PokemonDataAnalysis;
 import com.pokemon.analysis.scrapeme.service.PokemonDataAnalysisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +34,19 @@ public class PageController {
     public String pokemomDbPokemonPage(Model model) {
         List<PokemonDb> pokemons = pokemonDbService.getPokemons();
         model.addAttribute("pokemondb", pokemons);
-        return "pokemondb";
+        return "pokemondb/pokemondb";
     }
 
     @GetMapping("/scrapeme")
     public String scrapeMePokemonPage(Model model) {
         List<PokemonDataAnalysis> pokemons = pokemonDataAnalysisService.getPokemons();
         model.addAttribute("scrapeme", pokemons);
-        return "scrapeme";
+        return "scrapeme/scrapeme";
+    }
+
+
+    @GetMapping("/about")
+    public String aboutUsPage() {
+        return "about";
     }
 }

@@ -1,4 +1,4 @@
-package com.pokemon.analysis.user;
+package com.pokemon.analysis.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +11,8 @@ import jakarta.persistence.Table;
 
 import java.time.Instant;
 import java.util.UUID;
+
+import com.pokemon.analysis.user.mapper.UserRegistrationMapper;
 
 
 @Entity
@@ -33,10 +35,16 @@ public class User {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
     public User() {}
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
     public User(UUID id, String username, String email, String password, Instant createdAt, Instant updatedAt) {
         this.id = id;

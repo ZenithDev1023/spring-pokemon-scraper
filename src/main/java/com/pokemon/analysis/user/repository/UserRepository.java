@@ -1,4 +1,4 @@
-package com.pokemon.analysis.repository;
+package com.pokemon.analysis.user.repository;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -6,11 +6,13 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pokemon.analysis.user.User;
+import com.pokemon.analysis.user.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
     User findByEmail(String email);
+
+    User save(User user);
 
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
@@ -19,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     void deleteByUsernameAndPassword(String username, String password);
     void deleteByEmailAndPassword(String email, String passsword);
 
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
 
 
 }

@@ -1,4 +1,4 @@
-package com.pokemon.analysis.repository;
+package com.pokemon.analysis.scrapeme.repository;
 
 import java.util.Optional;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pokemon.analysis.scrapeme.PokemonDataAnalysis;
+import com.pokemon.analysis.scrapeme.entity.PokemonDataAnalysis;
 
 
 @Repository

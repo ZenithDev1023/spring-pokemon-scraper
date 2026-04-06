@@ -1,4 +1,4 @@
-package com.pokemon.analysis.pokemondb;
+package com.pokemon.analysis.pokemondb.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.pokemon.analysis.service.pokemondb.PokemonDbService;
+import com.pokemon.analysis.pokemondb.entity.PokemonDb;
+import com.pokemon.analysis.pokemondb.service.PokemonDbService;
 
 import org.springframework.ui.Model;
 
@@ -71,6 +72,6 @@ public class MainController {
         model.addAttribute("pokemonList", typePokemon);
         model.addAttribute("pokemonCount", typePokemon.size());
 
-        return "type-details";
+        return "pokemondb/type-details";
     }
 }

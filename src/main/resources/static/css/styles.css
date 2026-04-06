@@ -211,14 +211,14 @@ footer {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .nav {
         flex-direction: row;
         padding: 10px;
     }
 
     .nav a {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         padding: 2px 4px;
 
     }
@@ -248,6 +248,5 @@ footer {
     .footer-section p, a {
         font-size: 0.8rem;
     }
-
 
 }

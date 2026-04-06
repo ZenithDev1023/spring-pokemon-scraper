@@ -1,26 +1,47 @@
-package com.pokemon.analysis.scrapeme;
+package com.pokemon.analysis.scrapeme.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name="scrapeme")
 public class PokemonDataAnalysis {
 
     // Fields
-    @Column
     @Id
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private float price;
+
+    @NotNull
     private String description;
+
+    @NotNull
     private String stock;
+
+    @NotBlank
     private int sku;
+
+    @NotNull
     private String category;
+
+    @NotNull
     private String tag;
+
+    @NotNull
     private String weight;
+
+    @NotNull
     private String dimension;
+
+    @NotNull
     private String scraping_method;
 
 

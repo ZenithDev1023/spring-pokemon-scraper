@@ -1,9 +1,9 @@
-package com.pokemon.analysis.repository;
+package com.pokemon.analysis.pokemondb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pokemon.analysis.pokemondb.PokemonDb;
+import com.pokemon.analysis.pokemondb.entity.PokemonDb;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,7 @@
-package com.pokemon.analysis.service.scrapeme;
+package com.pokemon.analysis.scrapeme.service;
 
-import com.pokemon.analysis.repository.PokemonDataAnalysisRepository;
-import com.pokemon.analysis.scrapeme.PokemonDataAnalysis;
+import com.pokemon.analysis.scrapeme.entity.PokemonDataAnalysis;
+import com.pokemon.analysis.scrapeme.repository.PokemonDataAnalysisRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

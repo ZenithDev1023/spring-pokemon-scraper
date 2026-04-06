@@ -1,9 +1,10 @@
-package com.pokemon.analysis.user;
+package com.pokemon.analysis.user.mapper;
 
 import org.springframework.stereotype.Component;
 
 import com.pokemon.analysis.user.dto.RegistrationRequestDto;
 import com.pokemon.analysis.user.dto.RegistrationResponseDto;
+import com.pokemon.analysis.user.entity.User;
 
 @Component
 public class UserRegistrationMapper {

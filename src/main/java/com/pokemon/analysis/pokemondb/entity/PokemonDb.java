@@ -1,4 +1,4 @@
-package com.pokemon.analysis.pokemondb;
+package com.pokemon.analysis.pokemondb.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,33 +9,44 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="pokemondb")
 public class PokemonDb {
     // Fields
     @Id
-    @Column(name = "pokemon_name")
+    @Column(name = "pokemon_name", nullable = false)
     private String pokemonName;
 
-    @Column(name = "pokedex_number")
+    @Column(name = "pokedex_number", nullable = false)
     private int pokedex;
 
+    @NotNull
     private String type1;
+
     private String type2;
 
-    @Column(name = "total_stats")
+    @Column(name = "total_stats", nullable = false)
     private int totalStats;
-    
+
+    @NotBlank
     private int hp;
+
+    @NotBlank
     private int attack;
+
+    @NotBlank
     private int defense;
 
-    @Column(name = "sp_attack")
+    @Column(name = "sp_attack", nullable = false)
     private int spAttack;
 
-    @Column(name = "sp_defense")
+    @Column(name = "sp_defense", nullable = false)
     private int spDefense;
+
+    @NotBlank
     private int speed;
 
 
