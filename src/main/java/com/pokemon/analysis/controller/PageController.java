@@ -1,6 +1,6 @@
 package com.pokemon.analysis.controller;
 
-import com.pokemon.analysis.pokemondb.entity.PokemonDb;
+import com.pokemon.analysis.pokemondb.model.entity.PokemonDb;
 import com.pokemon.analysis.pokemondb.service.PokemonDbService;
 import com.pokemon.analysis.scrapeme.entity.PokemonDataAnalysis;
 import com.pokemon.analysis.scrapeme.service.PokemonDataAnalysisService;

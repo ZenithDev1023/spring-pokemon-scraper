@@ -1,76 +1,104 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/login.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        
-        <div class="nav" id="topNav">
-            <a href="/"><img src="/images/1C1E6614-57ED-402A-888B-9D364F9BE820_4_5005_c.jpeg" class="nav-logo"></a>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="nav" id="topNav">
+        <a href="/"><img src="/images/1C1E6614-57ED-402A-888B-9D364F9BE820_4_5005_c.jpeg" class="nav-logo"></a>
+
+        <div sec:authorize="isAuthenticated()">
             <a href="/pokemondb" class="nav-links">PokemonDB</a>
             <a href="/scrapeme" class="nav-links">Scrape me</a>
-            <a href="/about" class="nav-links">About us</a>
-            <a href="/signup">Sign up</a>
-            <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
-            <input type="text" class="navSearchBar" placeholder="Search...">
         </div>
 
-        <div class="outerContainer">
-            <h1>Login Page</h1>
-            <form action="/login" method="post">
-                <div class="loginContainer">
-                    <label>Username</label>
-                    <input type="text" placeholder="Enter Username" required>
+        <a href="/about" class="nav-links">About us</a>
+
+        <div sec:authorize="!isAuthenticated()">
+            <a href="/signup">Sign up</a>
+            <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
+        </div>
+
+
+        <input type="text" class="navSearchBar" placeholder="Search...">
+
+        <div sec:authorize="isAuthenticated()" class="logoutDiv">
+            <form method="POST" action="/logout">
+                <button type="submit" class="logoutBtn">Log out</button>
+            </form>
+        </div>
+    </div>
+  
+    <div class="outerContainer">
+        <form method="POST" action="/login">
+            <div class="loginContainer">
+                <label>Username</label>
+                    <input type="text" name="username" placeholder="Enter Username" required>
 
                     <label>Password</label>
-                    <input type="password" placeholder="Enter Password" required>
+                    <input type="password" name="password" placeholder="Enter Password" required>
+
+                    <a href ="/login" class ="altLink">Don't have an account? Login-up here</a>
                     
-                    <label>
-                        <input type="checkbox" checked=checked> Remember me
-                    </label>
+                <label>
+                    <input type="checkbox" name="remember-me" checked="checked"> Remember me
+                </label>
  
-                    <button class="loginButton">Login</button>
-                </div>
+                <button type="submit" class="loginButton">Login</button>
             </div>
         </form>
+    </div>
 
 
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PokéScrape Analytics</h3>
+                <p>Your source for Pokémon market data and statistics. Scraped and analyzed in real-time.</p>
+                <p>© 2026 PokéScrape. All rights reserved.</p>
+            </div>
 
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>PokéScrape Analytics</h3>
-                    <p>Your source for Pokémon market data and statistics. Scraped and analyzed in real-time.</p>
-                    <p>© 2026 PokéScrape. All rights reserved.</p>
-                </div>
-    
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="/">Home</a>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="/">Home</a>
+
+                <div sec:authorize="isAuthenticated()">
                     <a href="/pokemondb">PokemonDb Database</a>
                     <a href="/scrapeme">ScrapeMe Database</a>
-                    <a href="/about">About us</a>
+
+                    <form method="POST" action="/logout">
+                        <button type="submit">Log out</button>
+                    </form>
+                </div>
+
+                <a href="/about">About us</a>
+
+                <div sec:authorize="!isAuthenticated()">
                     <a href="/signup">Sign up</a>
                     <a href="/login">Login</a>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Email: info@pokescrape.com</p>
-                    <p>Twitter: @pokescrape</p>
-                    <p>GitHub: github.com/zenithdev1023</p>
+
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/logout">Log out</a>
                 </div>
+                
             </div>
-        </footer>
-        
-        <script src="" async defer></script>
-    </body>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@pokescrape.com</p>
+                <p>Twitter: @pokescrape</p>
+                <p>GitHub: github.com/zenithdev1023</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="" async defer></script>
+</body>
 </html>

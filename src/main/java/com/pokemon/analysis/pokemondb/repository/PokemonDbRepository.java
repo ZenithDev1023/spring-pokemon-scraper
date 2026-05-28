@@ -3,24 +3,22 @@ package com.pokemon.analysis.pokemondb.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pokemon.analysis.pokemondb.entity.PokemonDb;
+import com.pokemon.analysis.pokemondb.model.entity.PokemonDb;
 
 import java.util.List;
 import java.util.Optional;
 
 
 @Repository
-public interface PokemonDbRepository extends JpaRepository<PokemonDb, String> {
+public interface PokemonDbRepository extends JpaRepository<PokemonDb, Long> {
 
     void deleteByPokemonName(String pokemonName);
     void deleteByPokedex(int pokedex);
     void deleteByPokemonNameAndPokedex(String pokemonName, int pokedex);
 
-    List<PokemonDb> findAll();
-
     Optional<PokemonDb> findByPokemonNameAndPokedex(String pokemonName, int pokedex);
-
     Optional<PokemonDb> findByPokemonName(String pokemonName);
+
     List<PokemonDb> findPokemonByPokedex(int pokedex);
     List<PokemonDb> findPokemonByType1(String type1);
     List<PokemonDb> findPokemonByType2(String type2);

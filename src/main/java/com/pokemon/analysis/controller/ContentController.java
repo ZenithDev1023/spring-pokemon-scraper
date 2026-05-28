@@ -4,62 +4,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pokemon.analysis.user.service.UserService;
-import com.pokemon.analysis.user.entity.User;
+
+import com.pokemon.analysis.user.service.AuthService;
+import com.pokemon.analysis.user.dto.request.SignupRequestDTO;
 
 
 @Controller
 public class ContentController {
 
-    private UserService userService;
-
     @Autowired
-    public ContentController(UserService userService){
-        this.userService = userService;
-    }
-
-    @GetMapping("/signup")
-    public String signup(Model model) {
-        model.addAttribute("user", new User());
-        return "signup";
-    }
+    private AuthService authService;
     
 
-    @PostMapping("/signup")
-    public String processSignup(@ModelAttribute User user, Model model) {
-        try {
-            userService.registerUser(
-                user.getUsername(),
-                user.getEmail(),
-                user.getPassword()
-            );
-            return "redirect:/login?registered=true";
-
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "signup";
-        }
-    }
-
-
     @GetMapping("/login")
-    public String login(
+    public String showLoginPage(
         @RequestParam(value = "error", required = false) String error,
-        @RequestParam(value = "registered", required = false) String registered,
+        @RequestParam(value = "registered", required = false) String registered, 
         Model model
     ) {
         if (error != null) {
-            model.addAttribute("error", "Invalid username or passsword");
+            model.addAttribute("error", "Invalid username or password");
         }
 
         if (registered != null) {
-            model.addAttribute("message", "Registration successful! Please login.");
+            model.addAttribute("registered", "Successfully registered");
         }
 
         return "login";
     }
+
+
+    @GetMapping("/signup")
+    public String showSignupPage(Model model) {
+        model.addAttribute("signupRequest", new SignupRequestDTO());
+        return "signup";
+    }
+
+
 }

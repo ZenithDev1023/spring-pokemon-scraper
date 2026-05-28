@@ -1,27 +1,20 @@
 package com.pokemon.analysis.user.repository;
 
 import java.util.Optional;
-import java.util.UUID;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pokemon.analysis.user.entity.User;
+import com.pokemon.analysis.user.model.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
-    User findByEmail(String email);
-
-    User save(User user);
+public interface UserRepository extends CrudRepository<User, Long> {
+    
+    Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
+    Optional<User> findByVerificationCode(String verificationCode);
 
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
-
-
-    void deleteByUsernameAndPassword(String username, String password);
-    void deleteByEmailAndPassword(String email, String passsword);
-
-    Optional<User> findByUsername(String username);
-
 
 }

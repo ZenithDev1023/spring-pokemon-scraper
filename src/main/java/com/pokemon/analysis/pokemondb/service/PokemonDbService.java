@@ -1,6 +1,6 @@
 package com.pokemon.analysis.pokemondb.service;
 
-import com.pokemon.analysis.pokemondb.entity.PokemonDb;
+import com.pokemon.analysis.pokemondb.model.entity.PokemonDb;
 import com.pokemon.analysis.pokemondb.repository.PokemonDbRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -139,9 +139,9 @@ public class PokemonDbService {
 
 
     @Transactional
-    public PokemonDb addPokemon(PokemonDb Pokemon) {
-        pokemonRepository.save(Pokemon);
-        return Pokemon;
+    public PokemonDb addPokemon(PokemonDb pokemon) {
+        PokemonDb savedPokemon = pokemonRepository.save(pokemon);
+        return savedPokemon;
     }
 
 

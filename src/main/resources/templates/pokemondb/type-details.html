@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/pokemon-type.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="nav" id="topNav">
+        <a href="/"><img src="/images/1C1E6614-57ED-402A-888B-9D364F9BE820_4_5005_c.jpeg" class="nav-logo"></a>
 
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/pokemon-types.css">
-    </head>
-    <body>
-        
-        <div class="nav" id="topNav">
-            <a href="/"><img src="/images/1C1E6614-57ED-402A-888B-9D364F9BE820_4_5005_c.jpeg" class="nav-logo"></a>
+        <div sec:authorize="isAuthenticated()">
             <a href="/pokemondb" class="nav-links">PokemonDB</a>
             <a href="/scrapeme" class="nav-links">Scrape me</a>
-            <a href="/about" class="nav-links">About us</a>
+        </div>
+
+        <a href="/about" class="nav-links">About us</a>
+
+        <div sec:authorize="!isAuthenticated()">
             <a href="/signup">Sign up</a>
             <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
-            <input type="text" class="navSearchBar" placeholder="Search...">
         </div>
+
+        <input type="text" class="navSearchBar" placeholder="Search...">
+
+        <div sec:authorize="isAuthenticated()" class="logoutDiv">
+            <form method="POST" action="/logout">
+                <button type="submit" class="logoutBtn">Log out</button>
+            </form>
+        </div>
+    </div>
 
         <h1 class="header" th:text="'Pokemon Type ' + ${typeName}"></h1>
 
@@ -60,6 +72,7 @@
         </div>
 
 
+
         <footer>
             <div class="footer-content">
                 <div class="footer-section">
@@ -71,11 +84,23 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <a href="/">Home</a>
-                    <a href="/pokemondb">PokemonDb Database</a>
-                    <a href="/scrapeme">ScrapeMe Database</a>
+    
+                    <div sec:authorize="isAuthenticated()">
+                        <a href="/pokemondb">PokemonDb Database</a>
+                        <a href="/scrapeme">ScrapeMe Database</a>
+                    </div>
+    
                     <a href="/about">About us</a>
-                    <a href="/signup">Sign up</a>
-                    <a href="/login">Login</a>
+    
+                    <div sec:authorize="!isAuthenticated()">
+                        <a href="/signup">Sign up</a>
+                        <a href="/login">Login</a>
+                    </div>
+    
+                    <div sec:authorize="isAuthenticated()">
+                        <a href="/logout">Log out</a>
+                    </div>
+                    
                 </div>
                 
                 <div class="footer-section">

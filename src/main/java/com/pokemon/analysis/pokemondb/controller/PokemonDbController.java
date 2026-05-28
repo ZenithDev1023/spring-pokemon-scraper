@@ -1,6 +1,6 @@
 package com.pokemon.analysis.pokemondb.controller;
 
-import com.pokemon.analysis.pokemondb.entity.PokemonDb;
+import com.pokemon.analysis.pokemondb.model.entity.PokemonDb;
 import com.pokemon.analysis.pokemondb.service.PokemonDbService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 
@@ -75,6 +72,7 @@ public class PokemonDbController {
     @PostMapping
     public ResponseEntity<PokemonDb> addPokemon(@RequestBody PokemonDb Pokemon) {
         PokemonDb pokemon = pokemonService.addPokemon(Pokemon);
+        
         if (pokemon != null) {
             return new ResponseEntity<>(pokemon, HttpStatus.OK);
         } else {

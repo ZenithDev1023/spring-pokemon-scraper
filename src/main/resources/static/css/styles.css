@@ -50,12 +50,38 @@ body {
 
 }
 
+
 .nav a:hover {
     color: coral;
     background-color: rgba(255, 127, 80, 0.1);
     transform: scaleX(1.10);
     letter-spacing: 0.05rem;
 }
+
+
+
+.logoutBtn:hover {
+    background-color: coral;
+}
+
+.logoutDiv {
+    display: block;
+    margin-left: 8px;
+}
+
+.logoutBtn {
+    border: none;
+    background-color: #1a1a1a;
+    color: white;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 1px solid coral;
+}
+
 
 .navSearchBar {
     padding: 8px 15px;
@@ -220,7 +246,6 @@ footer {
     .nav a {
         font-size: 0.7rem;
         padding: 2px 4px;
-
     }
 
 
@@ -232,6 +257,11 @@ footer {
         background-color: #333;
         color: white;
         outline: none;
+    }
+
+    .logoutBtn {
+        font-size: 0.7rem;
+        padding: 6px 10px;
     }
 
 

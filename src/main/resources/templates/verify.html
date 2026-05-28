@@ -6,8 +6,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
     <div class="nav" id="topNav">
@@ -34,31 +34,26 @@
         </div>
     </div>
 
+
     <div class="outerContainer">
-        <div class="innerContainer">
-            <h1 class="aboutHeader">A Pokémon database built for learning, launching, and helping trainers.</h2>
+        <div class="loginContainer">
 
-            <h4 class="subHeader">What's working right now:</h4>
-            <ul class="unorderedList">
-                <li class="listElem">A custom built database with Pokémon sourced from trusted public sites</li>
-                <li class="listElem">Clean, searchable tables organized by type</li>
-                <li class="listElem">Detailed indivdual Pokémon pages with stats and abilities</li>
-                <li class="listElem">A growing set of tools to help trainers compare and understand their favorite Pokémon</li>
-            </ul>
+            <form action="/auth/verify" methood="POST">
+                <input type="hidden" name="email" th:value="${email}"/>
+                
+                <label>Enter Verification Code</label>
+                <input type="text" name="verificationCode" placeholder="Enter verification code..." required/>
+                
+ 
+                <button type="submit" class="loginButton">Submit</button>
+            </form>
 
-            <h4 class="subHeader">What we're building next:</h4>
-            <p>Better visual charts. Team building tools. Smarter search. Every feature is driven by what users actually ask for.</p>
+            <form action="/auth/resend" method="POST">
+                <input type="hidden" name="email" th:value="${email}"/>
+                <p class="altLink" style="text-decoration: none">Didn't recieve the code? Request for a new one here</p>
+                <button type="submit" class="loginButton">Resend Code</button>
+            </form>
 
-            <h4 class="subHeader">Why we built it:</h4>
-            <p>We're developers who love Pokémon. We wanted to prove we could take raw data — scraped, cleaned, and organized by hand — and turn it into a fast, useful, and good-looking web app.</p>
-
-
-            <h4 class="subHeader">This site is our showcase. But it's also for anyone who's ever asked:</h4>
-            <ul class="unorderedList">
-                <li class="listElem">"What's that Pokémon's type again?"</li>
-                <li class="listElem">"Does this evolution happen by level or trade?"</li>
-                <li class="listElem">"Which water type has the highest Special Attack?"</li>
-            </ul>
         </div>
     </div>
 
@@ -101,7 +96,8 @@
             </div>
         </div>
     </footer>
-        
-        <script src="" async defer></script>
-    </body>
+
+    
+    <script src="" async defer></script>
+</body>
 </html>

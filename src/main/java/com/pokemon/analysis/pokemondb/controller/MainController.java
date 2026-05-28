@@ -7,11 +7,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.pokemon.analysis.pokemondb.entity.PokemonDb;
+import com.pokemon.analysis.pokemondb.model.entity.PokemonDb;
 import com.pokemon.analysis.pokemondb.service.PokemonDbService;
 
 import org.springframework.ui.Model;
@@ -29,7 +30,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String showMainPage(Model model) {
+    public String showMainPage(Model model, Authentication authentication) {
         List<PokemonDb> pokemondb = pokemonService.getAllPokemon();
         
         Map<String, List<PokemonDb>> pokemonByType = new HashMap<>();
