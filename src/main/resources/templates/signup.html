@@ -49,10 +49,21 @@
                 <input type="hidden" name="role" value="USER"/>
 
                 <a href ="/login" class ="altLink">Don't have an account? Login-up here</a>
-                
+
                 <button type="submit" class="loginButton">Sign up</button>
             </div>
         </form>
+
+        <div class="oauthContainer">
+            <a th:href="@{/oauth2/authorization/google}">
+                <button class="oauthBtn">Signup with Google</button>
+            </a>
+
+            <a th:href="@{/oauth2/authorization/github}">
+                <button class="oauthBtn">Signup with Github</button>
+            </a>
+        </div>
+
     </div>
 
 

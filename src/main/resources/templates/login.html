@@ -53,6 +53,17 @@
                 <button type="submit" class="loginButton">Login</button>
             </div>
         </form>
+
+        <div class="oauthContainer">
+            <a th:href="@{/oauth2/authorization/google}">
+                <button class="oauthBtn">Login with Google</button>
+            </a>
+
+            <a th:href="@{/oauth2/authorization/github}">
+                <button class="oauthBtn">Login with Github</button>
+            </a>
+        </div>
+
     </div>
 
 
