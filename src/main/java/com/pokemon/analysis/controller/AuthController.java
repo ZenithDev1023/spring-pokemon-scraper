@@ -50,7 +50,7 @@ public class AuthController {
         RedirectAttributes redirectAttributes
     ) {
         if (result.hasErrors()) {
-            return "redirect:/signup";
+            return "redirect:/auth/signup";
         }
 
         try {
@@ -59,7 +59,7 @@ public class AuthController {
             return "redirect:/auth/verify";
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/signup";
+            return "redirect:/auth/signup";
         }
     }
 
@@ -79,11 +79,11 @@ public class AuthController {
         try {
             authService.verifyUser(verifyUser);
             redirectAttributes.addFlashAttribute("message", "Account verified successfully");
-            return "redirect:/login";
+            return "redirect:/auth/login";
 
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/auth/verify?email=" + verifyUser.getEmail();
+            return "redirect:/auth/login";
         }
     }
 

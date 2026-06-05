@@ -38,7 +38,7 @@
     <div class="outerContainer">
         <div class="loginContainer">
 
-            <form action="/auth/verify" methood="POST">
+            <form th:action="@{/auth/verify}" methood="POST">
                 <input type="hidden" name="email" th:value="${email}"/>
                 
                 <label>Enter Verification Code</label>
