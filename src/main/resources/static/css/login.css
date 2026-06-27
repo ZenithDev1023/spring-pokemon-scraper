@@ -68,34 +68,3 @@ form {
     background-color: #34495e;
     border: 1px solid coral;
 }
-
-
-.oauthContainer {
-    border-top: 1px solid #34495e;
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    padding: 20px;
-    margin-top: 0;
-    width: 100%;
-    justify-content: center;
-}
-
-.oauthBtn {
-    padding: 20px;
-    outline: none;
-    background-color: white;
-    border: 1px solid black;
-    font-size: 1rem;
-    border-radius: 20px;
-    transition: transform 0.5s ease;
-}
-
-.oauthBtn:hover {
-    background-color: rgb(251, 249, 249);
-    transform: translateY(-8px);
-}
-
-.oauthBtn:active {
-    background-color: white;
-}
